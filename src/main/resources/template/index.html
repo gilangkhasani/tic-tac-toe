@@ -45,7 +45,7 @@
             </tr>
         </table>
 
-        <form id="form_mark_tile" th:action="@{/}" method="POST" class="form-inline">
+        <form id="form_mark_tile" th:action="@{/__${rowColumn}__}" method="POST" class="form-inline">
             <div class="checkbox">
                 <label><input name="player_go_first" type="checkbox" th:checked="${game.isPlayerGoFirst()}" /> Play First</label>
             </div>
@@ -53,7 +53,6 @@
             <div class="btn-new-game-wrap">
                 <a id="btn-new-game" class="btn btn-success btn-lg" href="javascript:void(0);" role="button">New Game</a>
             </div>
-
             <input id="is_game_over" type="hidden" th:value="${game.isGameOver()}" />
             <input id="tile_id" name="tile_id" type="hidden" value="" />
             <input id="new_game" name="new_game" type="hidden" value="" />

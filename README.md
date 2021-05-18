@@ -12,7 +12,7 @@ A simple web app to play Tic Tac Toe against a dummy computer opponent.
 * Player can leave the game and come back later to finish it (as long as his session persists).
 
 ## Tech Stack:
-* Language: Java 8
+* Language: Java 11
 * Framework: Spring Boot
 * UI Layer: HTML, CSS, Javascript, jQuery, Bootstrap, [Thymeleaf](http://www.thymeleaf.org/) (Java Template Engine)
 * Build Tool: Maven

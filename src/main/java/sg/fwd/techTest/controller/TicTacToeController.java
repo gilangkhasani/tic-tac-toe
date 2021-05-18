@@ -3,6 +3,7 @@ package sg.fwd.techTest.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import org.springframework.web.bind.support.SessionStatus;
 import sg.fwd.techTest.model.Game;
 
 @Controller
@@ -10,16 +11,19 @@ import sg.fwd.techTest.model.Game;
 public class TicTacToeController {
 
     @RequestMapping(value = "/{rowColumn}", method = RequestMethod.GET)
-    public String index( @ModelAttribute("game" ) Game game, @PathVariable int rowColumn ) {
+    public String index( @ModelAttribute("game" ) Game game, @PathVariable int rowColumn, SessionStatus sessionStatus ) {
+        sessionStatus.setComplete();
         return "index";
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.POST)
+    @RequestMapping(value = "/{rowColumn}", method = RequestMethod.POST)
     public String markTile(
             @ModelAttribute("game" ) Game game,
             @RequestParam("tile_id") String tileId,
             @RequestParam(value = "new_game", required = false, defaultValue = "false") boolean newGame,
-            @RequestParam(value = "player_go_first", required = false, defaultValue = "false") boolean playerGoFirst
+            @RequestParam(value = "player_go_first", required = false, defaultValue = "false") boolean playerGoFirst,
+            @PathVariable int rowColumn
+
     ) {
 
         if ( newGame ) {
@@ -42,7 +46,6 @@ public class TicTacToeController {
     public Game populateGame(@PathVariable int rowColumn) {
         // populate object for first time if null (new session)
         // See: http://stackoverflow.com/questions/2757198/spring-framework-3-and-session-attributes
-        System.out.println(rowColumn);
         return new Game(rowColumn);
     }
 
