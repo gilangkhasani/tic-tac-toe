@@ -1,0 +1,9 @@
+spring:
+  thymeleaf:
+    prefix: classpath:/template/
+    suffix: .html
+
+server:
+  port: 8080
+  servlet:
+    context-path: /tictactoe
